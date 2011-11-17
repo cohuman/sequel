@@ -169,7 +169,7 @@ module Sequel
     # from the databases's timezone or the default database timezone if
     # the database does not have a timezone.
     def to_application_timestamp(v)
-      if v.is_a? String && v.length >= 19
+      if v.is_a?(String) && v.length >= 19
         Time.utc(v[0,4], v[5,7], v[8,10], v[11,13], v[14,16], v[17,19])
       else
         Sequel.convert_timestamp(v, timezone)
