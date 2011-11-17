@@ -85,11 +85,7 @@ module Sequel
     # +application_timezone+.  Used when coverting datetime/timestamp columns
     # returned by the database.
     def database_to_application_timestamp(v)
-      if v.is_a? String && v.length >= 19
-        Time.utc(v[0,4], v[5,7], v[8,10], v[11,13], v[14,16], v[17,19])
-      else
-        convert_timestamp(v, Sequel.database_timezone)
-      end
+      convert_timestamp(v, Sequel.database_timezone)
     end
   
     # Sets the database, application, and typecasting timezones to the given timezone. 
